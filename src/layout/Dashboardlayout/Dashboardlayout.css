@@ -1,0 +1,26 @@
+.card-div{
+    padding: 4px;
+    justify-content: space-between;
+    margin: 10px auto;
+    width: 99%;
+    max-width: 99%;
+    flex-wrap: wrap;
+}
+
+
+.card-div{
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    justify-content: space-evenly;
+    
+}
+
+.card-div-item{
+    width: 20rem;
+    background: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .12);
+    height: 8rem;
+    border-radius: 10px;
+}
+

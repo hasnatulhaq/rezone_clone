@@ -1,0 +1,101 @@
+.Footer{
+background-color: #303030;
+color: silver;
+height: 38vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+display: none;
+}
+
+.Container{
+    margin-left: 200px;
+    margin-right: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Footer--top-section{
+    border-bottom: 1px solid #484848;
+    margin-top: -14px;
+}
+
+.social-icon{
+    display: flex;
+    border-left: 1px solid #484848;
+    width: 20%;
+    justify-content: inherit;
+    padding: 8px;
+}
+
+
+.list-Container{
+    display: flex;
+    height: 21vh;
+    width: 40%;
+    justify-content: inherit;
+}
+
+
+.list-style{
+    list-style: none;
+}
+
+
+.Footer--bottom-section{
+    padding: 25px 0;
+    border-top: 1px solid #484848;
+    text-align: center;
+}
+
+
+.Footer-image{
+    height: 40px;
+    margin-top: 22px;
+}
+
+.company_name{
+    color:#fff ;
+    font-weight: 400;
+}
+
+
+.list-items{
+    margin: 6px auto;
+}
+
+.list-items:hover{
+   text-decoration: underline;
+   color: white;
+}
+
+.list_heading{
+    color: white;
+    font-weight: 400;
+}
+
+.logo_width{
+    width: 200px;
+    height: 40px;
+}
+
+@media (max-width: 700px) {
+
+      .Footer--top-section{
+        margin-top: -1px;
+      }
+    
+      .Container{
+        margin-left: 45px;
+       margin-right: 70px;
+      }
+
+     .list-Container{
+        width: 100%;
+     }
+     .copyright-text{
+           font-size: 12px;
+     }
+  }
+  
+  

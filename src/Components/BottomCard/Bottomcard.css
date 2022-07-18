@@ -1,0 +1,31 @@
+
+.Bottomcard_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Bottomcard_container_text{
+    width: 50%;
+    font-size: 20px;
+}
+
+.bottom_paragraph{
+    text-align: justify;
+}
+
+@media (max-width: 700px) {
+    .Bottomcard_container{
+        flex-direction: column;
+    }
+
+    .Bottomcard_container_text{
+        width: 100%;
+       font-size: 17px;
+    }
+
+    .Bt-image{
+        width: 300px;
+    }
+    
+  }

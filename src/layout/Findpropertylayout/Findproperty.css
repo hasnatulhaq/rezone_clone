@@ -1,0 +1,18 @@
+.findproperty{
+    justify-content: center;
+display: flex;
+flex-direction: column;
+}
+
+.findproperty-heading{
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.findpropertyimage{
+    height: 450px;
+    width: 450px;
+    align-self: center;
+}
+
+

@@ -1,0 +1,23 @@
+
+.Card--Container{
+    flex: 0 1 40%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+margin-bottom: 50px;
+}
+
+
+
+.Card--Container_Description{
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+.About_image{
+    max-width: 150px;
+    margin-bottom: 30px;
+}
+

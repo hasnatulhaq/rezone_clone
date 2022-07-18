@@ -1,0 +1,159 @@
+
+.layout_container{
+    display: flex;
+    flex-direction: column;
+    background: #fafafa
+}
+
+
+.layout_container__heading{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 45vh;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin: 90px auto;
+}
+
+
+
+.card{
+justify-content: center;
+text-align: center;
+width: 90%;
+margin: 0 auto;
+background-color: #fff;
+border-radius: 15px;
+padding: 1px;
+}
+
+.card--title{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    line-height: 35px;
+    padding-top: 50px;
+    color: #004369;
+}
+
+.orange{
+    color: #ff914d;
+}
+
+.heading_text{
+   color: #004369;
+   font-size: 4rem;
+}
+
+
+
+/* .button-orange{
+    display: block;
+    background-color: #ff914d;
+    color: #fff !important;
+    border-radius: 25px;
+    border: none;
+    font-family: Roboto;
+    font-size: 16px;
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+} */
+
+
+.description-line{
+    font-family: 'Lato', sans-serif;
+    margin-top: -20px;
+    color: #004369;
+    font-size: 19px;
+  }
+
+.para{
+    font-size: 20px;
+}
+
+
+.homepage-benefits-section{
+    text-align: center;
+    width: 90%;
+    margin: 20px auto;
+} 
+
+
+
+.Aboutcard_container{
+display: flex;
+width: 100%;
+justify-content: center;
+height: fit-content;
+background-color: transparent;
+padding-bottom: 50px;
+margin-bottom: 50px;
+flex-wrap: wrap;
+}
+
+
+.card_button{
+    display: flex;
+    width: 27%;
+    background: white;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0 auto;
+}
+
+
+.svg-1{
+   background-image: url("../../images/slice1.png");
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 100%;
+   background-position-x: right;
+}
+
+
+.svg-2{
+    background-image: url("../../images/slice2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position-x: left;
+}
+
+
+@media (max-width: 700px) {
+     .layout_container__heading{
+        padding-left: 0%;
+        padding-right: 0%;
+     }
+
+     .break-line{
+        display:  none;
+     }
+
+    .Aboutcard_container{
+         flex-direction: column;
+        }
+    .para{
+        font-size: 15px;
+    }
+    .description-line{
+        font-size: 12px;
+        width: 98%;
+      }
+      .heading_text{
+        font-size: 2.5rem;
+      }
+      .card_button{
+        display: flex;
+        width: 50%;
+        flex-direction: column;
+      }
+      .card{
+        padding: 10px;
+      }
+  }
