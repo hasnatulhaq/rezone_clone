@@ -1,8 +1,6 @@
 import './Table.css'
 
 
-
-
 function Table({title}){
     return(
     <div className='table-container'>

@@ -9,15 +9,15 @@ function ResetPassword(){
                 <div className="resetpassword-form">
                 <div className="resetpassword-field-container">
                 <label  className='popup_label navy'>Current Password</label>
-                <input type='text' className='resetpassword-field' placeholder='Enter an address to get zoning details'/>
+                <input type='text' className='resetpassword-field' placeholder='current password'/>
                 </div>
                 <div className="resetpassword-field-container">
                 <label  className='popup_label navy'>New Password</label>
-                <input type='text' className='resetpassword-field' placeholder='Enter an address to get zoning details'/>
+                <input type='text' className='resetpassword-field' placeholder='New password'/>
                 </div>
                 <div className="resetpassword-field-container">
                 <label  className='popup_label navy'>Retype Password</label>
-                <input type='text' className='resetpassword-field' placeholder='Enter an address to get zoning details'/>
+                <input type='text' className='resetpassword-field' placeholder='Retype New password'/>
                 </div>
                 </div>
                 <div>
