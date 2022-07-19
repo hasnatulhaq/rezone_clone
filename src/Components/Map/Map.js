@@ -1,5 +1,7 @@
 import './Map.css'
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import ReactMapGl, {NavigationControl} from "react-map-gl";
+import Geocoder from "../Geocoder/Geocoder"
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjUyaDljbG8zcyJ9.zR9o-L0WGPt1JKTHd0oUFg";
 
@@ -16,6 +18,16 @@ function Map(){
         // onMove={(evt) => setviewport(evt.viewport)}
         // onClick={displaydata}
       >
+            <Geocoder
+          mapboxAccessToken={MAPBOX_TOKEN}
+          position="top-left"
+          // setdata={setData}
+          zoom={17}
+          countries="us,ca"
+          placeholder="Search e.g New york"
+          width="100%"
+          height="100%"
+        />
          <NavigationControl />
       </ReactMapGl>
         </>
