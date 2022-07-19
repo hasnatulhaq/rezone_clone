@@ -5,7 +5,7 @@ import './Map.css'
 function Map(){
     return(
         <>
-           <h1>Rezone map</h1>
+           <h1>map here</h1>
         </>
     )
 }

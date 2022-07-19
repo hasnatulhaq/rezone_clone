@@ -65,5 +65,4 @@ function Table({title}){
     )
 }
 
-
 export default Table

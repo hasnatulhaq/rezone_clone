@@ -1,7 +1,7 @@
+import './CitySubscription.css'
 
 
-
-function citysubscription(){
+function CitySubscription(){
     return(
         <>
             <h1>City subscription</h1>
@@ -9,4 +9,4 @@ function citysubscription(){
     )
 }
 
-export default citysubscription
+export default CitySubscription

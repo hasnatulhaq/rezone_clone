@@ -5,6 +5,8 @@ import ResetPassword from '../../Components/ResetPassword/ResetPassword'
 import DashboardLayout from '../../layout/Dashboardlayout/Dashboardlayout'
 import Map from '../../Components/Map/Map'
 import Favourites from '../../Components/Favourites/Favourites'
+import History from '../../Components/History/History'
+import CitySubscription from '../../Components/CitySubscription/CitySubscription'
 
 function DashboardPage(){
 
@@ -29,8 +31,8 @@ function DashboardPage(){
                 {active === "findproperty" && <FindProperty/>}
                 {active === "rezonemap" && <Map/>}
                 {active === "favourites" && <Favourites/>}
-                {active === "history" && <FindProperty/>}
-                {active === "citysubscription" && <FindProperty/>}
+                {active === "history" && <History/>}
+                {active === "citysubscription" && <CitySubscription/>}
                 {active === "resetpassword" && <ResetPassword/>}
             </div>
              </div>
