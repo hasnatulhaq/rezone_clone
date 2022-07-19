@@ -8,6 +8,17 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjU
 function Map(){
     return(
         <>
+        <div className='map-topbar'>
+         <div className='map-zonefilter'>
+           Zone Filter
+         </div>
+         <div className='map-zonefilter'>
+           Protected use
+         </div>
+         <div className='map-zonefilter'>
+           overlays
+         </div>
+         </div>
         <ReactMapGl
         width="100vw"
         height="100vh"
