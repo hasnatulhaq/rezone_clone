@@ -1,5 +1,5 @@
 import './Map.css'
-import ReactMapGl from "react-map-gl";
+import ReactMapGl, {NavigationControl} from "react-map-gl";
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjUyaDljbG8zcyJ9.zR9o-L0WGPt1JKTHd0oUFg";
 
@@ -15,7 +15,9 @@ function Map(){
         // {...viewport}
         // onMove={(evt) => setviewport(evt.viewport)}
         // onClick={displaydata}
-      ></ReactMapGl>
+      >
+         <NavigationControl />
+      </ReactMapGl>
         </>
     )
 }
