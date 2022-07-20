@@ -39,7 +39,7 @@ function Map(){
           width="100%"
           height="100%"
         />
-         <NavigationControl />
+         <NavigationControl position='top-left' />
       </ReactMapGl>
         </>
     )
