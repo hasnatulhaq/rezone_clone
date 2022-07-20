@@ -9,7 +9,7 @@ function DashboardLayout(){
 
     let addresssearches=150,mapclicks=114,summaryreports=7;
     return(
-        <>
+        <div className="layouut-d">
         <DashboardSearch/>
                 <div className='card-div'>
                     <div className='card-div-item'>
@@ -24,7 +24,8 @@ function DashboardLayout(){
                 </div>
                 <Table title="Recent Zoning Searches"/>
                 <Table title="Recent Summary Reports"/>
-        </>
+     </div>
+    
     )
 }
 

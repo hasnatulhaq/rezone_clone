@@ -3,6 +3,7 @@ import "./ResetPassword.css"
 
 function ResetPassword(){
     return(
+        <div className="layouut-d">
          <div className="resetpassword-container">
             <div className="resetpassword-layout">
                 <h1 className="resetpassword-heading">Reset password</h1>
@@ -24,6 +25,7 @@ function ResetPassword(){
                     <button className="update-button-style">Update</button>
                 </div>
                 </div>
+            </div>
             </div>
     )
 }
