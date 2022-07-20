@@ -7,7 +7,6 @@
     flex-wrap: wrap;
 }
 
-
 .card-div{
     display: flex;
     flex-direction: row;
@@ -23,3 +22,12 @@
     border-radius: 10px;
 }
 
+@media (max-width: 700px) {
+    .card-div{
+        flex-direction: column;
+    }
+    .card-div-item{
+        width: 100%;
+        margin-top: 15px;
+    }
+}

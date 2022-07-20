@@ -1,19 +1,7 @@
+
 .Dashboard_layout{
     display: flex;
     flex-direction: row;
-}
-
-
-.sidenavbar{
-display: flex;
-flex-direction: column;
-height: 100vh;
-background: #fff;
-width: 15%;
-left: 0;
-margin-top: 61px;
-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .12);
-position: fixed;
 }
 
 .Dashboard_card_layout {
@@ -35,24 +23,7 @@ position: fixed;
 }
 
 
-.sidenavbar-item{
-    display: flex;
-    height: 35vh;
-   flex-direction: column;
-   width: 75%;
-   margin: 52px auto;
-  justify-content: space-evenly;
-  padding-left: 40px;
-}
 
-.sidebarlink{
-    text-decoration: none;
-    color: gray;
-}
-
-.sidebarlink:hover{
-    background-color: #f6f7fe;
-}
 
 
 @media (max-width: 700px) {

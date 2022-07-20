@@ -1,10 +1,11 @@
+import Table from '../Table/Table'
 import './CitySubscription.css'
 
 
 function CitySubscription(){
     return(
         <>
-            <h1>City subscription</h1>
+            <Table/>
         </>
     )
 }
