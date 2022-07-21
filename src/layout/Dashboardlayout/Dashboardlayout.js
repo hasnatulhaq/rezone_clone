@@ -25,7 +25,6 @@ function DashboardLayout(){
                 <Table title="Recent Zoning Searches"/>
                 <Table title="Recent Summary Reports"/>
      </div>
-    
     )
 }
 
