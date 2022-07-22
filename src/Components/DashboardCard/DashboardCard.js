@@ -1,6 +1,7 @@
 import './DashboardCard.css'
 
-function DashboardCard({title,counter}){
+
+function DashboardCard({title,counter , icon}){
       return(
             <div className='minicard'>
                 <div className='counter'>
@@ -11,7 +12,7 @@ function DashboardCard({title,counter}){
                           <h3>{counter}</h3>
                     </div>
                 </div>
-                <div>icon</div>
+                <div>{icon}</div>
             </div>
 )
 }

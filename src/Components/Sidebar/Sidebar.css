@@ -12,13 +12,12 @@
     }
 
     .sidenavbar-item{
-        display: flex;
         height: 35vh;
-       flex-direction: column;
-       width: 75%;
-       margin: 52px auto;
-      justify-content: space-evenly;
-      padding-left: 40px;
+        justify-content: space-evenly;
+        margin: 52px auto;
+        padding-left: 15px;
+        display:  flex;
+        flex-direction: column;
     }
 
     .sidebarlink{
