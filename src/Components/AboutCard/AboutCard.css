@@ -8,13 +8,10 @@ justify-content: flex-start;
 margin-bottom: 50px;
 }
 
-
-
 .Card--Container_Description{
     width: 70%;
     margin: 0 auto;
 }
-
 
 .About_image{
     max-width: 150px;

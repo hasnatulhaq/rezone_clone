@@ -3,6 +3,7 @@ import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import ReactMapGl, {NavigationControl} from "react-map-gl";
 import Geocoder from "../Geocoder/Geocoder"
 import { useState } from 'react';
+import {FaAngleDown } from 'react-icons/fa';
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjUyaDljbG8zcyJ9.zR9o-L0WGPt1JKTHd0oUFg";
 
@@ -17,18 +18,17 @@ function Map(){
     isDragging: false,
   });
 
-
     return(
         <>
         <div className='map-topbar'>
          <div className='map-zonefilter'>
-           Zone Filter
+           Zone Filter <FaAngleDown/>
          </div>
          <div className='map-zonefilter'>
-           Protected use
+           Protected use  <FaAngleDown/>
          </div>
          <div className='map-zonefilter'>
-           overlays
+           overlays <FaAngleDown/>
          </div>
          </div>
          <div className='legend'>
