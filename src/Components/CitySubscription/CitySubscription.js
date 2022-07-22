@@ -4,9 +4,10 @@ import './CitySubscription.css'
 
 function CitySubscription(){
     return(
-        <>
-            <Table/>
-        </>
+           <div className='layouut-d'>
+           <Table/>
+           </div>
+            
     )
 }
 

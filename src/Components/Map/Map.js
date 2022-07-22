@@ -18,7 +18,6 @@ function Map(){
   });
 
 
-
     return(
         <>
         <div className='map-topbar'>
@@ -35,6 +34,9 @@ function Map(){
          <div className='legend'>
               <p>legend</p>
          </div>
+         {/* <div className='map-menu'>
+            <h1>road</h1>
+         </div> */}
         <ReactMapGl
         width="100vw"
         height="100vh"
