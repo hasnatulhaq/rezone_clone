@@ -23,12 +23,21 @@ function Map(){
         <div className='map-topbar'>
          <div className='map-zonefilter'>
            Zone Filter <FaAngleDown/>
+           <div className='drop-down'>
+                 filter
+           </div>
          </div>
          <div className='map-zonefilter'>
            Protected use  <FaAngleDown/>
+           <div className='drop-down'>
+                 filter
+           </div>
          </div>
          <div className='map-zonefilter'>
            overlays <FaAngleDown/>
+           <div className='drop-down'>
+                 filter
+           </div>
          </div>
          </div>
          <div className='legend'>

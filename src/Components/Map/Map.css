@@ -40,3 +40,19 @@ padding: 10px;
     border-radius: 10px;
     border: 1px solid #d9d7d7;
   }
+
+
+  .drop-down{
+    background: white;
+    color: black;
+    height: 100px;
+    width: 120px;
+    margin-top: 5px;
+    border: 1px solid lightgray;
+    display: none;
+  }
+
+  .drop-down:hover{
+       display: block;
+       z-index: 3;
+  }
