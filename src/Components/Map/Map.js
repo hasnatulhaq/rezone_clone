@@ -40,12 +40,13 @@ function Map(){
            </div>
          </div>
          </div>
+         <div className="under-topnavbar">
+           <h1>hello</h1>
+         </div>
+
          <div className='legend'>
               <p>legend</p>
          </div>
-         {/* <div className='map-menu'>
-            <h1>road</h1>
-         </div> */}
         <ReactMapGl
         width="100vw"
         height="100vh"
