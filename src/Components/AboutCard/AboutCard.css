@@ -1,6 +1,6 @@
 
 .Card--Container{
-    flex: 0 1 40%;
+flex: 0 1 40%;
 display: flex;
 flex-direction: column;
 align-items: center;

@@ -6,8 +6,8 @@ import {FaDashcube
 
 function Sidebar({setActive}){
     return(
-        <div className='sidenavbar'>
-        <div className='sidenavbar-item'>
+    <div className='sidenavbar'>
+    <div className='sidenavbar-item'>
     <a href="#about" className="sidebarlink" onClick={()=>setActive("dashboard")}><FaDashcube/>Dashboard</a>
     <a href="#services" className="sidebarlink" onClick={()=>setActive("findproperty")}><FaSearchLocation/>Find a Property</a>
     <a href="#clients" className="sidebarlink" onClick={()=>setActive("rezonemap")}><FaMap/>Rezone Map</a>

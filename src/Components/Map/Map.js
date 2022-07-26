@@ -1,7 +1,7 @@
 import './Map.css'
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import ReactMapGl, {NavigationControl} from "react-map-gl";
-import Geocoder from "../Geocoder/Geocoder"
+// import Geocoder from "../Geocoder/Geocoder"
 import { useState } from 'react';
 import {FaAngleDown } from 'react-icons/fa';
 
@@ -21,6 +21,9 @@ function Map(){
     return(
         <>
         <div className='map-topbar'>
+          <div>
+              <input type="text" placeholder='Search property'></input>
+          </div>
          <div className='map-zonefilter'>
            Zone Filter <FaAngleDown/>
            <div className='drop-down'>
@@ -41,7 +44,12 @@ function Map(){
          </div>
          </div>
          <div className="under-topnavbar">
-           <h1>hello</h1>
+           <div><FaAngleDown/> </div>
+           <div><FaAngleDown/></div>
+           <div><FaAngleDown/></div>
+           <div><FaAngleDown/></div>
+           <div><FaAngleDown/></div>
+           <div><FaAngleDown/></div>
          </div>
 
          <div className='legend'>
@@ -57,7 +65,7 @@ function Map(){
         onMove={(evt) => setviewport(evt.viewport)}
         // onClick={displaydata}
       >
-            <Geocoder
+            {/* <Geocoder
           mapboxAccessToken={MAPBOX_TOKEN}
           position="top-left"
           // setdata={setData}
@@ -66,7 +74,7 @@ function Map(){
           placeholder="Search e.g New york"
           width="100%"
           height="100%"
-        />
+        /> */}
          <NavigationControl position='top-left' />
       </ReactMapGl>
         </>

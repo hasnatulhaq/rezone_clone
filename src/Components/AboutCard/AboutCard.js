@@ -10,7 +10,6 @@ function AboutCard({image , title , description}){
                       </p>  
             </div>
     )
-
 }
 
 export default AboutCard
