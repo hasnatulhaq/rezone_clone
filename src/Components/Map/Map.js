@@ -22,7 +22,7 @@ function Map(){
         <>
         <div className='map-topbar'>
           <div>
-              <input type="text" placeholder='Search property'></input>
+              <input type="text" placeholder='Search property' className='google-search'/>
           </div>
          <div className='map-zonefilter'>
            Zone Filter <FaAngleDown/>
