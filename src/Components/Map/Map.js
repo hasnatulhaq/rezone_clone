@@ -2,8 +2,9 @@ import './Map.css'
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import ReactMapGl, {NavigationControl} from "react-map-gl";
 // import Geocoder from "../Geocoder/Geocoder"
-import { useState } from 'react';
+import {useState } from 'react';
 import {FaAngleDown } from 'react-icons/fa';
+import {Autocomplete} from '@react-google-maps/api'
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjUyaDljbG8zcyJ9.zR9o-L0WGPt1JKTHd0oUFg";
 
@@ -22,7 +23,10 @@ function Map(){
         <>
         <div className='map-topbar'>
           <div>
-              <input type="text" placeholder='Search property' className='google-search'/>
+            <Autocomplete>
+            <input type="text" placeholder='Search property' className='google-search'/>
+            </Autocomplete>
+             
           </div>
          <div className='map-zonefilter'>
            Zone Filter <FaAngleDown/>
@@ -44,7 +48,7 @@ function Map(){
          </div>
          </div>
          <div className="under-topnavbar">
-           <div><FaAngleDown/> </div>
+           <div><FaAngleDown/></div>
            <div><FaAngleDown/></div>
            <div><FaAngleDown/></div>
            <div><FaAngleDown/></div>
@@ -75,7 +79,10 @@ function Map(){
           width="100%"
           height="100%"
         /> */}
-         <NavigationControl position='top-left' />
+        <div>
+        <NavigationControl position='top-left' />
+        </div>
+        
       </ReactMapGl>
         </>
     )
