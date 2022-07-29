@@ -19,14 +19,14 @@ function Map(){
     isDragging: false,
   });
 
+
     return(
         <>
         <div className='map-topbar'>
           <div>
             <Autocomplete>
-            <input type="text" placeholder='Search property' className='google-search'/>
+            <input id="" type="text" placeholder='Search property' className='google-search'/>
             </Autocomplete>
-             
           </div>
          <div className='map-zonefilter'>
            Zone Filter <FaAngleDown/>
@@ -82,7 +82,6 @@ function Map(){
         <div>
         <NavigationControl position='top-left' />
         </div>
-        
       </ReactMapGl>
         </>
     )
