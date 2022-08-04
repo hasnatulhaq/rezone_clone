@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useControl, Marker } from 'react-map-gl';
+import { useControl, Marker ,useMap,Map} from 'react-map-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 /* eslint-disable complexity,max-statements */
 
 export default function GeocoderControl(props) {
     
     const [marker, setMarker] = useState(null);
+    // const {current: map} = useMap();
     const geocoder = useControl(() => {
         const ctrl = new MapboxGeocoder(Object.assign(Object.assign({}, props), { marker: false, accessToken: props.mapboxAccessToken}));
         ctrl.on('loading', props.onLoading);

@@ -16,7 +16,6 @@ import Popup from "../src/Components/Popup/Popup";
 import DashboardPage from '../src/Pages/DashboardPage/DashboardPage'
 
 
-
 function App() {
  
   const [isOpen, setIsOpen] = useState(false);
