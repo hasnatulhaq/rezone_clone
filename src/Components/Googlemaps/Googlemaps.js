@@ -15,8 +15,12 @@ const center = {
 function GoogleMaps() {
 
   const [autocomplete, setAutocomplete] = useState(null)
-
-
+  const [lat , setLat] = useState(null)
+  const [lng , setLng]  = useState(null)
+   
+   console.log(lat)
+   console.log(lng)
+   
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "YOUR_API_KEY"
@@ -26,8 +30,8 @@ function GoogleMaps() {
   const onPlaceChanged = ()=>{
     console.log("ADDRESS ",autocomplete.getPlace())
     var places = autocomplete.getPlace()
-    console.log("lat",places.geometry.location.lat())
-    console.log("lng", places.geometry.location.lng())
+    setLat(places.geometry.location.lat())
+    setLng(places.geometry.location.lng())
   }
 
 
