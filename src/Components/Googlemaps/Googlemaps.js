@@ -1,25 +1,34 @@
 import React, { useState } from 'react'
 import './Googlemaps.css'
-import { GoogleMap, useJsApiLoader , Autocomplete} from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader , Autocomplete, Marker} from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
   height: '900px'
 };
 
-const center = {
-  lat: 40.750183,
-  lng: -73.983759,
-};
+
 
 function GoogleMaps() {
 
   const [autocomplete, setAutocomplete] = useState(null)
-  const [lat , setLat] = useState(null)
-  const [lng , setLng]  = useState(null)
+  const [lat , setLat] = useState(40.750183)
+  const [lng , setLng]  = useState(-73.983759)
+
+
+  const center = {
+    lat,
+    lng,
+  };
    
-   console.log(lat)
-   console.log(lng)
+  const position={
+       lat : lat,
+       lng : lng,
+  }
+
+  const onRendered = marker => {
+    console.log('marker: ', marker)
+  }
    
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -41,7 +50,7 @@ function GoogleMaps() {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map)
-  }, [])
+  }, [lat])
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -64,6 +73,10 @@ function GoogleMaps() {
        restrictions={{country: "us"}}>
         <input id='place-id' type='text'  />
       </Autocomplete>
+      <Marker 
+      onLoad={onRendered}
+       position={position}
+      ></Marker>
     </GoogleMap>
   ) : <>
   </>
