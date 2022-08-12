@@ -10,10 +10,10 @@ import {FaAngleDown } from 'react-icons/fa';
 // import axios from 'axios';
 
 
+
 const MAPBOX_TOKEN = "pk.eyJ1IjoiaGFzbmF0dWxoYXEiLCJhIjoiY2wwdzBjb3JrMTc3ajNkbjUyaDljbG8zcyJ9.zR9o-L0WGPt1JKTHd0oUFg";
 
 function MapS(){
-
 
   const [viewport, setviewport] = useState({
     longitude: -73.983759,
@@ -88,7 +88,6 @@ function MapS(){
         </>
     )
 }
-
 
 
 export default MapS

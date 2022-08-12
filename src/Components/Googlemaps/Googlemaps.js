@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import './Googlemaps.css'
 import { GoogleMap, useJsApiLoader , Autocomplete, Marker} from '@react-google-maps/api';
+// import {GoogleMapsOverlay as DeckOverlay} from '@deck.gl/google-maps';
+// import axios from 'axios'
+import { GoogleMapsOverlay } from "@deck.gl/google-maps";
+import { MVTLayer } from "deck.gl";
 
 const containerStyle = {
   width: '100%',
   height: '900px'
 };
-
 
 
 function GoogleMaps() {
@@ -15,17 +18,16 @@ function GoogleMaps() {
   const [lat , setLat] = useState(40.750183)
   const [lng , setLng]  = useState(-73.983759)
 
-
   const center = {
     lat,
     lng,
   };
-   
+
   const position={
        lat : lat,
        lng : lng,
   }
-
+console.log({position})
   const onRendered = marker => {
     console.log('marker: ', marker)
   }
@@ -55,17 +57,50 @@ function GoogleMaps() {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
-   console.log("map", map)
   // console.log(onLoad())
+  // let layers 
+  // useEffect(()=>{
+  //  const data = axios.get('https://testing-api.zoneomics.com/tiles/zones?x=2416&y=3081&z=13&city_id=265').then((res)=>console.log('api',{res}))
+  
+  // layers= new MVTLayer({
+  //   data :  data,
+  // }) 
+  // },[])
 
+
+  // console.log(layers , "tiles data")
+  // const layers = new MVTLayer({
+  //       data : 'https://testing-api.zoneomics.com/tiles/zones?x=2416&y=3081&z=13&city_id=265'
+  // })
+
+  
+
+
+  // console.log(layers , "from mvt layer")
+
+  const deckOverlay = new GoogleMapsOverlay({
+    layers: [
+      new MVTLayer({
+        data: `https://testing-api.zoneomics.com/tiles/zones?x={x}&y={y}&z={z}&city_id=265`,
+        minZoom: 0,
+        maxZoom: 23,
+        getLineColor: [192, 192, 192],
+        getFillColor: [140, 170, 180],
+      }),
+    ]
+  });
+  
 
   return isLoaded ? (
-            <GoogleMap
+      <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
       zoom={3}
-      onLoad={onLoad}
+      // onLoad={onLoad}
       onUnmount={onUnmount}
+      onLoad={map => {
+        deckOverlay.setMap(map); 
+      }}
     > 
       <Autocomplete
       onLoad={(e)=>setAutocomplete(e)}
@@ -81,6 +116,5 @@ function GoogleMaps() {
   ) : <>
   </>
 }
-
 
 export default React.memo(GoogleMaps)
