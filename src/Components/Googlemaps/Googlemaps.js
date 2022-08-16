@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import './Googlemaps.css'
-import { GoogleMap, useJsApiLoader , Autocomplete, Marker , OverlayView} from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader , Autocomplete, Marker} from '@react-google-maps/api';
 import axios from 'axios'
 import { GoogleMapsOverlay } from "@deck.gl/google-maps";
 import { MVTLayer } from "deck.gl";
@@ -20,10 +20,9 @@ function GoogleMaps() {
   const [zone, SetZone] = useState([]);
   const [Cityid , SetCityId] = useState();
   const [colors, setColors] = useState();
-  const ref = useRef();
   const [map, setMap] = useState(null);
-  // const [zoom, setZoom] = useState(8)
-
+ 
+ 
   const center = {
     lat,
     lng,
@@ -42,6 +41,8 @@ console.log({position})
     googleMapsApiKey: "YOUR_API_KEY"
   })
 
+  console.log(isLoaded)
+
  
   const onPlaceChanged = ()=>{
     var places = autocomplete.getPlace()
@@ -49,9 +50,6 @@ console.log({position})
     setLng(places.geometry.location.lng())
   }
 
-
-
-  
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
@@ -81,10 +79,12 @@ console.log({position})
     setColors(staticColor);
   }, []);
 
+  console.log(zone)
+  console.log(colors)
 
-  let deckOverlay;
 
-  deckOverlay = new GoogleMapsOverlay({
+
+ const deckOverlay = new GoogleMapsOverlay({
     layers: [
       new MVTLayer({
         data: `https://testing-api.zoneomics.com/tiles/zones?x={x}&y={y}&z={z}&city_id=${Cityid}`,
@@ -96,12 +96,10 @@ console.log({position})
     ]
   });
   deckOverlay.setMap(map)
-     
-
+    
   return (
     <>
     <GoogleMap
-      ref={map}
       mapContainerStyle={containerStyle}
       center={center}
       zoom={10}
@@ -119,7 +117,7 @@ console.log({position})
        position={position}
       ></Marker>
     </GoogleMap>
-    </>   
+    </>
   );
 }
 
@@ -127,6 +125,4 @@ export default React.memo(GoogleMaps)
 
 
 
- {/* <OverlayView
-      onLoad={(map)=>deckOverlay.setMap(map)}>
-    </OverlayView> */}
+ 
