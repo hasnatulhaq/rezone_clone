@@ -9,6 +9,7 @@ import History from '../../Components/History/History'
 import CitySubscription from '../../Components/CitySubscription/CitySubscription'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import GoogleMaps from '../../Components/Googlemaps/Googlemaps'
+// import Root from '../../Components/MapComponent/MyMapComponent'
 
 function DashboardPage(){
 
@@ -21,6 +22,7 @@ function DashboardPage(){
             <div className='Dashboard_card_layout_container'>
                 {active === "dashboard" && <DashboardLayout/>}
                 {active === "findproperty" && <FindProperty/>}
+                {/* {active === "rezonemap" && <Root/>} */}
                 {active === "rezonemap" && <GoogleMaps/>}
                 {/* {active === "rezonemap" && <Map/>} */}
                 {active === "favourites" && <Favourites/>}
