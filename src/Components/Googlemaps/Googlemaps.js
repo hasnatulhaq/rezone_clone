@@ -49,6 +49,8 @@ console.log({position})
     setLng(places.geometry.location.lng())
   }
 
+
+
   
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
