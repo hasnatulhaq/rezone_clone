@@ -82,8 +82,6 @@ console.log({position})
   console.log(zone)
   console.log(colors)
 
-
-
  const deckOverlay = new GoogleMapsOverlay({
     layers: [
       new MVTLayer({
