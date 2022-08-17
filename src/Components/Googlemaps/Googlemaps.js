@@ -5,6 +5,8 @@ import axios from 'axios'
 import { GoogleMapsOverlay } from "@deck.gl/google-maps";
 import { MVTLayer } from "deck.gl";
 import { staticColor } from "../../Color.js";
+// import hexRgb from 'hex-rgb';
+import hexToRgb from 'hex-to-rgb';
 
 const containerStyle = {
   width: '100%',
@@ -22,7 +24,6 @@ function GoogleMaps() {
   const [colors, setColors] = useState();
   const [map, setMap] = useState(null);
  
- 
   const center = {
     lat,
     lng,
@@ -32,7 +33,7 @@ function GoogleMaps() {
        lat : lat,
        lng : lng,
   }
-console.log({position})
+
   const onRendered = marker => {
     console.log('marker: ', marker)
   }
@@ -41,7 +42,7 @@ console.log({position})
     googleMapsApiKey: "YOUR_API_KEY"
   })
 
-  console.log(isLoaded)
+ 
 
  
   const onPlaceChanged = ()=>{
@@ -60,41 +61,63 @@ console.log({position})
     setMap(null)
   }, [])
 
-   useEffect(()=>{
-         async function getData(){
-           try{
-            const res=await axios.get('https://testing-api.zoneomics.com/cities/findByLatLng?lat='+lat+'&lng='+lng, )
-          if(res?.data?.data)
-                  console.log(res.data)
-                  SetZone(res.data.data.zoneCode);
-                  SetCityId(res.data.data.id);
-           } catch(error){
-                console.log("Not found any zone data",error);
-           }
-         }
-         getData()
-   },[lat,lng]);
+
+  useEffect(()=>{
+    async function getData(){
+      try{
+       const res=await axios.get('https://testing-api.zoneomics.com/cities/findByLatLng?lat='+lat+'&lng='+lng, )
+     if(res?.data?.data)
+             console.log(res.data)
+             SetZone(res.data.data.zoneCode);
+             SetCityId(res.data.data.id);
+      }catch(error){
+           console.log("Not found any zone data",error);
+      }
+    }
+    getData()
+},[lat,lng]);
+
+useEffect(() => {
+  setColors(staticColor);
+}, []);
+
+
+// var hexToRgb = require('hex-to-rgb');
+ 
+
+const matchExpression = ["match", ["get", "z"]];
+for (let row = 0; row < zone.length; row++) {
+  const color = colors[row];
+  const rgbcolors = hexToRgb(color)
+  matchExpression.push(zone[row], rgbcolors);
+}
+matchExpression.push("white");
+
+
+   
+  //  let values = 10;
   
-  useEffect(() => {
-    setColors(staticColor);
-  }, []);
-
-  console.log(zone)
-  console.log(colors)
-
- const deckOverlay = new GoogleMapsOverlay({
+  const deckOverlay = new GoogleMapsOverlay({
     layers: [
       new MVTLayer({
         data: `https://testing-api.zoneomics.com/tiles/zones?x={x}&y={y}&z={z}&city_id=${Cityid}`,
         minZoom: 0,
         maxZoom: 23,
-        getLineColor: [19, 180 , 192],
-        getFillColor: [19, 180 , 192],
+        getLineColor: [19, 18 , 192],
+        getFillColor: d =>{
+          console.log(d , "hello world") 
+          let newarr=colors[0]
+          newarr = hexToRgb(newarr)
+          colors.shift()
+          return newarr
+      },
+        getLineWidth: 1,
       }),
     ]
   });
+
   deckOverlay.setMap(map)
-    
+  
   return (
     <>
     <GoogleMap
