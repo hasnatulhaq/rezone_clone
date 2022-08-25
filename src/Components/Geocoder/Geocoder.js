@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useControl, Marker ,useMap,Map} from 'react-map-gl';
+import { useControl, Marker} from 'react-map-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 /* eslint-disable complexity,max-statements */
 
