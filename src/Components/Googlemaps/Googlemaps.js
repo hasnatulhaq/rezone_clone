@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import './Googlemaps.css'
 import { GoogleMap, useJsApiLoader , Autocomplete, Marker} from '@react-google-maps/api';
-import axios from 'axios'
+
 import { GoogleMapsOverlay } from "@deck.gl/google-maps";
 import { MVTLayer} from "deck.gl";
 import { staticColor } from "../../Color.js";

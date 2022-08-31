@@ -1,4 +1,4 @@
-export const staticColor=  [
+export const colors=  [
     '#deb887',
     '#5f9ea0',
     '#7fff00',

@@ -54,9 +54,9 @@ function MapS(){
            <div><FaAngleDown/></div>
            <div><FaAngleDown/></div>
          </div>
-         <div className='legend'>
+         {/* <div className='legend'>
               <p>legend</p>
-         </div>
+         </div> */}
          <MapProvider>
         <Map
         // id='1'

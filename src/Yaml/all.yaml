@@ -1,0 +1,225 @@
+#   Defining variables to store the colors for the different layers.
+#   These can be refenreced as parameters in draw.
+
+# Define the textures that will be used in the redering
+# For the POIs icons we will give the textures for each type of the POI
+# The pa_dublin, followed by the URL, and then define the sprite (for now the whole png is being used as a sprite
+# so we are using 0 as both x and y origin, and the icon itself in 18x18 pixels)
+# a different texture object for each icon as the icons are kept in a seperate png file
+
+# Will have to define styles for each icon seperately as the textures can't be directly called in the draw function of the layer
+# The style will tell the type of object it can be applied to (points for pois) and the applicable texture file
+# if the texture is not referenced in a style, then we will get a error
+styles:
+  glow:
+    base: polygons
+    lighting: vertex
+    shaders:
+      blocks:
+        color: "color.rgb += vec3(worldPosition().z / 800.);"
+  glowline:
+    base: lines
+    #mix: glow
+
+  c_polygon:
+    base: polygons
+    blend: translucent
+    animated: true
+
+  d_polygon:
+    base: polygons
+    shaders:
+      blocks:
+        color: |
+          color.a = 0;
+# define the source of the tiles we are using
+sources:
+  zones:
+    type: MVT
+    url: /tiles/zones?x={x}&y={y}&z={z}&city_id=
+    max_zoom: 21
+    min_display_zoom: 10
+    max_display_zoom: 21
+ 
+
+global:
+  filter_zone_code: ""
+  current_city_id: 0
+
+# As we are using the Composite GeoJSON for the source, each layer drawn here is the object class, the layer pa_dublin acts as the layer from
+# source JSON if we don't explicitly define it, boundary layer here is using the data in the JSON that is followed by the "boundary": key word
+# before the features are defined
+layers:
+  zones:
+    data: { source: zones }
+    enabled: false
+    filter: |
+      function () {
+          if(global.filter_zone_code == "")
+              return true;
+          else if (global.filter_zone_code == "zone_off")
+              return false;
+          else if ( global.filter_zone_code.indexOf(feature.z) > -1){
+              return true;
+          }
+          else if (typeof feature.pl !== 'undefined'){
+              return global.filter_zone_code.some(r=> feature.pl.split(', ').indexOf(r) >= 0);
+          }
+          else{
+              return false;
+          }
+      }
+    draw:
+      c_polygon:
+        # the higher the order, the greater the importance when drawn
+        interactive: true
+        order: 2
+        color: |
+          function(){ if (feature.z == "C-1") { return "#deb887"; }else if (feature.z == "IND") { return "#5f9ea0"; }else if (feature.z == "IP") { return "#7fff00"; }else if (feature.z == "PVD") { return "#d2691e"; }else if (feature.z == "R-1") { return "#ff7f50"; }else if (feature.z == "R-2") { return "#6495ed"; }else if (feature.z == "TC-1") { return "#dc143c"; }else if (feature.z == "TC-2") { return "#00ffff"; }else { return "#708090"; } }
+      lines:
+        style: glowline
+        width:
+          [
+            [13, 30.0],
+            [14, 10.0],
+            [15, 7.0],
+            [16, 5.0],
+            [17, 3.0],
+            [18, 3.0],
+            [19, 3.0],
+            [20, 3.0],
+            [21, 3.0],
+          ]
+        color: [1.0, 1.0, 1.0]
+        order: 30
+    _labels:
+      draw:
+        text:
+          text_source: z
+          font:
+            family: Rubik
+            weight: 400
+            fill: "#3A3939"
+            size: 14px
+            order: 32
+  overLays:
+    data: { source: overLays }
+    enabled: false
+    filter: |
+      function () {
+          if(global.filter_zone_code == "")
+              return true;
+          else if (global.filter_zone_code == "zone_off")
+              return false;
+          else if ( global.filter_zone_code.indexOf(feature.z) > -1){
+              return true;
+          }
+          else if (typeof feature.pl !== 'undefined'){
+              return global.filter_zone_code.some(r=> feature.pl.split(', ').indexOf(r) >= 0);
+          }
+          else{
+              return false;
+          }
+      }
+    draw:
+      c_polygon:
+        # the higher the order, the greater the importance when drawn
+        interactive: true
+        order: 2
+        color: |
+          function(){ if (feature.z == "C-1") { return "#deb887"; }else if (feature.z == "IND") { return "#5f9ea0"; }else if (feature.z == "IP") { return "#7fff00"; }else if (feature.z == "PVD") { return "#d2691e"; }else if (feature.z == "R-1") { return "#ff7f50"; }else if (feature.z == "R-2") { return "#6495ed"; }else if (feature.z == "TC-1") { return "#dc143c"; }else if (feature.z == "TC-2") { return "#00ffff"; }else { return "#708090"; } }
+      lines:
+        style: glowline
+        width:
+          [
+            [13, 30.0],
+            [14, 10.0],
+            [15, 7.0],
+            [16, 5.0],
+            [17, 3.0],
+            [18, 3.0],
+            [19, 3.0],
+            [20, 3.0],
+            [21, 3.0],
+          ]
+        color: [1.0, 1.0, 1.0]
+        order: 30
+    _labels:
+      draw:
+        text:
+          text_source: z
+          font:
+            family: Rubik
+            weight: 400
+            fill: "#3A3939"
+            size: 14px
+            order: 32
+  parcels:
+    data: { source: parcels }
+    enabled: false
+    draw:
+      lines:
+        style: glowline
+        width:
+          [
+            [13, 30.0],
+            [14, 10.0],
+            [15, 7.0],
+            [16, 5.0],
+            [17, 3.0],
+            [18, 3.0],
+            [19, 3.0],
+            [20, 3.0],
+            [21, 3.0],
+          ]
+        color: "#8c8c8c"
+        order: 29
+  prospect:
+    data: { source: prospect }
+    enabled: false
+    draw:
+      c_polygon:
+        interactive: true
+        order: 2
+        color: "#016FF9"
+      lines:
+        style: glowline
+        width:
+          [
+            [13, 30.0],
+            [14, 10.0],
+            [15, 7.0],
+            [16, 5.0],
+            [17, 3.0],
+            [18, 3.0],
+            [19, 3.0],
+            [20, 3.0],
+            [21, 3.0],
+          ]
+        color: "#016FF9"
+        order: 31
+  cities_extent:
+    data: { source: cities_extent }
+    enabled: false
+    draw:
+      d_polygon:
+        interactive: true
+        order: 3
+        color: |
+          function(){ if (feature.city_id != global.current_city_id) { return "#BD0026"; } }
+      lines:
+        style: glowline
+        width:
+          [
+            [13, 30.0],
+            [14, 10.0],
+            [15, 7.0],
+            [16, 5.0],
+            [17, 3.0],
+            [18, 3.0],
+            [19, 3.0],
+            [20, 3.0],
+            [21, 3.0],
+          ]
+        color: "#BD0026"
+        order: 31

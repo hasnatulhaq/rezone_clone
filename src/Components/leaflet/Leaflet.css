@@ -1,0 +1,21 @@
+.autocomplete{
+    margin: 30px;
+}
+
+
+.legend{
+    background: #ffffff;
+    width: 125px;
+    height: 300px;
+    margin-left: 10px;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    padding-left: 16px;
+    bottom: 30px;
+    text-align: left;
+    border-radius: 10px;
+    border: 1px solid #d9d7d7;
+  }
