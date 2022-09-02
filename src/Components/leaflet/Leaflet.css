@@ -2,7 +2,6 @@
     margin: 30px;
 }
 
-
 .legend{
     background: #ffffff;
     width: 125px;
@@ -19,3 +18,39 @@
     border-radius: 10px;
     border: 1px solid #d9d7d7;
   }
+
+
+  .top-mapbar{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+  }
+
+  .drop-down-list  {
+    height: 300px;
+    margin-top: 27px;
+    display: flex;
+    flex-direction: row;
+  }
+ 
+.multi-select {
+  width: 300px !important;
+  }
+
+.select-zones{
+  height: 36px;
+width: 223px;
+border: 1px solid #80808078;
+margin-top: 30px;
+margin-left: 29px;
+overflow: scroll;
+color: #666060;
+}
+
+.google-input-search{
+  height: 32px;
+}
+
+.map-container-leaflet{ 
+    z-index: -2;
+ }

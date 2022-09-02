@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer} from 'react-leaflet';
 import React, { useState, useEffect } from 'react'
 import ReactLeafletGoogleLayer from 'react-leaflet-google-layer';
 import 'leaflet/dist/leaflet.css'
@@ -9,7 +9,10 @@ import Mapmarker from '../../images/my-map-marker.png'
 import axios from 'axios'
 import YAMLFILE from '../../Yaml/all.yaml'
 import { createTileUrl, initializeTangram, updateTangram, updateTangramConfig } from './codes';
-
+// import { components } from "react-select";
+// import { default as ReactSelect } from "react-select";
+// import {MultiSelect} from "react-multi-select-component";
+import Selectmultiple from 'multiselect-react-dropdown'
 
 
 function MapLeaf() {
@@ -25,19 +28,20 @@ function MapLeaf() {
   const Tangram = window.Tangram || ''
   const [tangramLayer, setTangramLayer] = useState()
   const [legend, setLegend] = useState()
+  const [optionZones, setOptionZones] = useState()
+   
 
   // get zoneCodes
   useEffect(()=>{
-   axios.get('https://testing-api.zoneomics.com/cities/findByLatLng?lat='+lat+'&lng='+lng, )
+   axios.get('https://testing-api.zoneomics.com/cities/findByLatLng?lat='+lat+'&lng='+lng )
    .then((res)=>{
-
      //  if(res?.data?.data)
-     console.log(res.data , " cities data")
+     console.log(res.data , "cities data")
      SetData(res.data)
      setZoneCodes(res.data.data.zoneCode);
+     setOptionZones(res.data.data.zoneCode)
      setcityId(res.data.data.id);
     })
-     
     }
 ,[lat,lng]);
 
@@ -62,7 +66,6 @@ function MapLeaf() {
   }, []);
 
 
-
   // Initializing tangram layer and add to map
   useEffect(() => {
     if (Tangram && map) {
@@ -70,13 +73,12 @@ function MapLeaf() {
       layer.scene.subscribe({
         view_complete: () => {
           setTilesRendered(true)
-
         },
       });
       map.addLayer(layer);
       setTangramLayer(layer);
     }
-
+    
     console.log({map})
   }, [map, Tangram]);
 
@@ -96,13 +98,10 @@ function MapLeaf() {
     lng: lng,
   }
 
-
   var myIcon = L.icon({
     iconUrl: Mapmarker,
     iconSize: [35, 45],
   });
-
-
 
 
   useEffect(() => {
@@ -111,9 +110,7 @@ function MapLeaf() {
       map.setView(position, 14)
       map.flyTo(position, 14)
       L.marker(position, { icon: myIcon }).addTo(map)
-
     }
-
   }, [map, position])
 
   
@@ -125,10 +122,8 @@ function MapLeaf() {
       cityId
       && zoneCodes
       ) {
-        
-        
+         
         const url = createTileUrl(cityId);
-        console.log({zoneCodes})
 
       updateTangramConfig(tangramLayer, map, setLegend , {
         zoneCodes,
@@ -136,24 +131,85 @@ function MapLeaf() {
         alpha: 0.5, // opacity
         layer: 'zone',
       });
-
     }
   }, [
     cityId,
-
+    zoneCodes
   ]);
 
+// const {setstate , setState} = useState()
+//  const handleChange = (selected) => {
+//     setState({
+//       optionSelected: selected
+//     });
+//   };
+
+
+  // const [value, setValue] = useState('');
+
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
+
+
+  // const Option = (props) => {
+  //   return (
+  //     <div>
+  //       <components.Option {...props}>
+  //         <input
+  //           type="checkbox"
+  //           checked={props.isSelected}
+  //           onChange={() => null}
+  //         />{" "}
+  //         <label>{props.label}</label>
+  //       </components.Option>
+  //     </div>
+  //   );
+  // };
+  // const zonelist = zoneCodes.map((z) =>  <option value={z}>{z}</option>);
+     const [selected, setSelected] = useState([]);
+     const zonelist = zoneCodes.map((e)=>({label:e, value:e}))
+     const selection =(e)=>{
+      if(!selected.includes(e[0].value))
+      setSelected([...selected, e[0].value])}
+
+console.log(zoneCodes)
   return (
     <>
-      <div className='autocomplete'>
+    <div className='top-mapbar'>
+    <div className='autocomplete'>
         <Autocomplete
           onLoad={(e) => setAutocomplete(e)}
           onPlaceChanged={onPlaceChanged}
           restrictions={{ country: "us" }}>
-          <input id='place-id' type='text' />
+          <input id='place-id' type='text' className='google-input-search'/>
         </Autocomplete>
       </div>
-      <MapContainer ref={setMap}  center={center} zoom={10} scrollWheelZoom={false} style={{ width: '100%', height: '100vh' }}>
+      <div className='drop-down-list'>
+      {/* <MultiSelect
+        className='multi-select'
+        options={zonelist}
+        selected={selected}
+        onChange={selection}
+        // onChange={(e)=>setSelected([...selected, e[0].value])}
+        labelledBy={("Zones Filter")}
+        hasSelectAll={true}
+      /> */}
+      <Selectmultiple
+        isObject={false}
+        options={optionZones}
+        onRemove={(e)=>console.log(e)}
+         onSelect={(e)=>setZoneCodes([...e])} 
+        showCheckbox 
+      />
+      </div>
+
+      
+      <div className='select-zones'>
+      <p>{selected}</p>
+      </div>
+    </div>
+      <MapContainer ref={setMap}  center={center} zoom={10} scrollWheelZoom={false} style={{ width: '100%', height: '100vh',zIndex: '0'}}>
         {/* <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url= {mvttiles}
@@ -166,3 +222,25 @@ function MapLeaf() {
 }
 
 export default MapLeaf
+
+
+  // {/* <div className='zonecode_list'>{selected}</div> */}
+  //     {/* <label>
+  //       Zonecode filter
+  //       <select value={value} onChange={handleChange}>
+  //          {zonelist}
+  //       </select>
+  //     </label>
+  //     <p>selected zones {value}</p> */}
+  //     {/* <ReactSelect
+  //         options={zonelist}
+  //         isMulti
+  //         closeMenuOnSelect={false}
+  //         hideSelectedOptions={false}
+  //         components={{
+  //           Option
+  //         }}
+  //         onChange={handleChange}
+  //         allowSelectAll={true}
+  //         // value={optionSelected}
+  //       /> */}

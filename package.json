@@ -21,6 +21,7 @@
     "hex-to-rgb": "^1.0.1",
     "leaflet": "^1.8.0",
     "mapbox-gl": "^2.9.2",
+    "multiselect-react-dropdown": "^2.0.25",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",
@@ -29,8 +30,10 @@
     "react-leaflet-google-layer": "^2.0.4",
     "react-map-gl": "^7.0.17",
     "react-map-gl-geocoder": "^2.2.0",
+    "react-multi-select-component": "^4.3.3",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
     "tangram": "^0.0.1",
     "web-vitals": "^2.1.4",
     "yaml-loader": "^0.6.0"

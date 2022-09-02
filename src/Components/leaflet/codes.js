@@ -112,7 +112,7 @@ const createLegendFn = (legend, alpha) => {
 const updateTangram = (tangramLayer, map) => {
   tangramLayer.scene.updateConfig();
   tangramLayer.scene.immediateRedraw();
-  map.invalidateSize(true);
+  // map.invalidateSize(true);
 };
 
 // /**
@@ -123,7 +123,6 @@ const updateTangram = (tangramLayer, map) => {
 //  * @param {object} config - the config for the tangram layer - url, zoneCodes, alpha
 //  */
 const updateTangramConfig = (tangramLayer, map, setLegend, config) => {
-  console.log(config)
   const legendArr = createLegend(config.zoneCodes);
   const legendFn = createLegendFn(legendArr, config.alpha);
 setLegend({ legendArr });
