@@ -8,7 +8,7 @@ import Favourites from '../../Components/Favourites/Favourites'
 import History from '../../Components/History/History'
 import CitySubscription from '../../Components/CitySubscription/CitySubscription'
 import Sidebar from '../../Components/Sidebar/Sidebar'
-// import GoogleMaps from '../../Components/Googlemaps/Googlemaps'
+import GoogleMaps from '../../Components/Googlemaps/Googlemaps'
 import MapLeaf from '../../Components/leaflet/Leafletmaps'
 // import Root from '../../Components/MapComponent/MyMapComponent'
 
@@ -24,10 +24,11 @@ function DashboardPage(){
                 {active === "dashboard" && <DashboardLayout/>}
                 {active === "findproperty" && <FindProperty/>}
                 {/* {active === "rezonemap" && <Root/>} */}
-                {active === "rezonemap" && <MapLeaf/>}
-                {/* {active === "rezonemap" && <GoogleMaps/>} */}
+                {/* {active === "rezonemap" && <MapLeaf/>} */}
+                {active === "rezonemap" && <GoogleMaps/>}
                 {/* {active === "rezonemap" && <Map/>} */}
                 {active === "favourites" && <Favourites/>}
+                {/* {active === "favourites" && <Favourites/>} */}
                 {active === "history" && <History/>}
                 {active === "citysubscription" && <CitySubscription/>}
                 {active === "resetpassword" && <ResetPassword/>}

@@ -1,11 +1,11 @@
 import React, {useEffect, useState } from 'react'
 import './Googlemaps.css'
 import { GoogleMap, useJsApiLoader , Autocomplete, Marker} from '@react-google-maps/api';
-
+import axios from 'axios'
 import { GoogleMapsOverlay } from "@deck.gl/google-maps";
 import { MVTLayer} from "deck.gl";
-import { staticColor } from "../../Color.js";
-import hexToRgb from 'hex-to-rgb';
+// import { staticColor } from "../../Color.js";
+// import hexToRgb from 'hex-to-rgb';
 
 const containerStyle = {
   width: '100%',
@@ -19,10 +19,13 @@ function GoogleMaps() {
   const [lng , setLng]  = useState(-73.983759)
   const [zone, SetZone] = useState([]);
   const [Cityid ,SetCityId] = useState();
-  const [colors, setColors] = useState();
+  // const [colors, setColors] = useState();
   const [map, setMap] = useState(null);
   const [data, SetData] = useState([]);
  
+
+  console.log(zone)
+  
   const center = {
     lat,
     lng,
@@ -40,7 +43,7 @@ function GoogleMaps() {
     id: 'google-map-script',
     googleMapsApiKey: "YOUR_API_KEY"
   })
-
+   console.log(isLoaded)
   const onPlaceChanged = ()=>{
     var places = autocomplete.getPlace()
     setLat(places.geometry.location.lat())
@@ -73,9 +76,9 @@ function GoogleMaps() {
     getData()
 },[lat,lng]);
 
-useEffect(() => {
-  setColors(staticColor);
-}, []);
+// useEffect(() => {
+//   setColors(staticColor);
+// }, []);
 
 
 // var hexToRgb = require('hex-to-rgb');
@@ -122,6 +125,22 @@ useEffect(() => {
 //     position: [-122.5, 37.8],
 //   },
 // ];
+let zones = [];
+const getZoneBasedColor = (zone_code) => {
+  const randomBetween = (min = 0, max = 255) =>
+    min + Math.floor(Math.random() * (max - min + 1));
+  const r = randomBetween();
+  const g = randomBetween();
+  const b = randomBetween();
+  const index = zones.find((zone) => zone.code === zone_code);
+  if (index) {
+    return index.color;
+  } else {
+    const color = [r, g, b, 255];
+    zones.push({ code: zone_code, color: color });
+    return color;
+  }
+};
 
 console.log(data , " all data ")
   //  let values = 10;
@@ -133,12 +152,15 @@ console.log(data , " all data ")
         minZoom: 10,
         maxZoom: 23,
         getLineColor: [19, 18 , 192],
-        getFillColor: d=>{
-         let newarr=colors[0]
-          newarr = hexToRgb(newarr)
-          colors.shift()
-          return newarr
+        getFillColor: (f, g) => {
+          return getZoneBasedColor(f.properties.z);
         },
+        // getFillColor: d=>{
+        //  let newarr=colors[0]
+        //   newarr = hexToRgb(newarr)
+        //   colors.shift()
+        //   return newarr
+        // },
           // let newarr=colors[0]
           // newarr = hexToRgb(newarr)
           // colors.shift()
